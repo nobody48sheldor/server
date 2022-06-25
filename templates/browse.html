@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block menu %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div id="files">
+{% for i in files %}
+    {% if i == ".."%}
+        <form action="#" class="input-group" method="post" enctype = "multipart/form-data" id="back">
+          <input type="hidden" value="Back" name="cliquedfile">
+          <button type="submit" class="button" value="submit", style="margin: 5px">Back</button>
+        </form>
+    {% else%}
+        <form action="#" class="input-group" method="post" class="button">
+            <input type="hidden" value="{{i}}" name="cliquedfile">
+            <button type="submit" class="button" value="submit" style="margin: 5px">{{i}}</button>
+        </form>
+    {% endif %}
+{% endfor %}
+</div>
+
+{% endblock %}

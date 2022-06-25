@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block menu %}
+
+<h1> menu </h1>
+
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="title"> LOG IN </h1>
+
+<div id="inputArea" >
+  <form action="browse" method="post">
+        <div>
+          <p>Username</p>
+          <input id="inputTextArea" autofocus name="user" type="user" value="" required>
+        </div>
+        <div>
+          <p>Password</p>
+          <input id="inputTextArea" autofocus name="pass" type="password" value="" required>
+        </div>
+        <input id="submitButton" type="submit">
+    </form>
+</div>
+
+{% endblock %}
+
+<!-- <script>
+    function cript(){
+        var pass = CryptoJS.SHA1("<?php echo $_POST["password"]; ?>");
+
+        var passString = pass.toString();
+
+        console.log(passString);
+        document.getElementById('inputPassword').value = passString;
+    }
+</script>
+-->

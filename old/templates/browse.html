@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block menu %}
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">Serv-Rasp</a>
+  <form action="#" class="input-group" method="post">
+    <input class="form-control mr-sm-2" type="text" placeholder="file/folder 's name" aria-label="Search" name="files">
+
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="submit">Search File/Folder</button>
+  </form>
+
+{% endblock %}
+
+{% block back %}
+
+<a class="btn btn-secondary" href="../piapp" role="button", style="margin: 20px">Home</a>
+
+{% endblock %}
+
+{% block content %}
+<div style="display: inline">
+    <form action="#" class="input-group" method="post" enctype = "multipart/form-data">
+        <input type="file" class="btn btn-outline-warning" name="upload" style="margin-left: 20px">
+        <button type="submit" class="btn btn-success" style="margin-left: 5px">upload</button>
+    </form>
+    <form action="#" class="input-group" method="post" enctype = "multipart/form-data">
+        <input class="form-control mr-sm-2" type="search" placeholder="Name" aria-label="Search" style="margin-left: 60%; margin-top: 20px" name="makedir">
+        <button type="submit" class="btn btn-outline-success" style="margin: 20px">make directory</button>
+    </form>
+</div>
+
+<p></p>
+
+{% for i in files %}
+    {% if i == ".."%}
+        <form action="#" class="input-group" method="post" enctype = "multipart/form-data">
+            <input type="hidden" value="{{i}}" name="cliquedfile">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" value="submit", style="margin: 5px">{{i}}</button>
+        </form>
+    {% else%}
+        <form action="#" class="input-group" method="post">
+            <input type="hidden" value="{{i}}" name="cliquedfile">
+            <button type="submit" class="btn btn-secondary btn-lg btn-block" value="submit" style="margin: 5px">{{i}}</button>
+        </form>
+    {% endif %}
+
+    {% if i != ".."%}
+        <form action="#" class="input-group" method="post" style="display: inline">
+            <input type="hidden" value="{{i}}" name="download">
+            <button type="submit" class="btn btn-success" value="submit" style="margin: 7px; margin-left: 20px">download "{{i}}"</button>
+        </form>
+        <form action="#" class="input-group" method="post" style="display: inline">
+            <input type="hidden" value="{{i}}" name="delet">
+            <button type="submit" class="btn btn-danger" value="submit" style="margin: 7px; margin-left: 20px">delet "{{i}}"</button>
+        </form>
+        <form action="#" class="input-group" method="post" style="display: inline">
+            <input type="hidden" value="{{i}}" name="deletdir">
+            <button type="submit" class="btn btn-outline-danger" value="submit" style="margin: 7px; margin-left: 20px">delet directory "{{i}}"</button>
+        </form>
+        <form action="#" class="input-group" method="post" style="display: inline; margin-left: 20px">
+            <input type="hidden" value="{{i}}" name="renamefile">
+            <button type="submit" class="btn btn-outline-warning" value="submit" style="margin: 7px; margin-left: 20px">rename "{{i}} to : "</button>
+            <div style="margin: 7px; display: inline-block">
+                <input class="form-control" type="text" placeholder="New name" aria-label="text" name="rename">
+            </div>
+        </form>
+
+        <form action="#" class="input-group" method="post" style="display: inline; margin-left: 20px">
+            <input type="hidden" value="{{i}}" name="movefile">
+            <button type="submit" class="btn btn-outline-success" value="submit" style="margin: 4px; margin-bottom: 6px">move "{{i}} to : "</button>
+            <div style="margin: 7px; display: inline-block">
+                <input class="form-control" type="text" placeholder="Path" aria-label="text" name="movepath">
+            </div>
+        </form>
+
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
